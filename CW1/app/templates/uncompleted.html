@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Uncompleted Assessments{% endblock %}
+
+{% block content %}
+<h1>Uncompleted Assessments</h1>
+
+<!-- Display uncompleted assessments in a list format -->
+<ul class="list-group">
+    {% if assessments %}
+        {% for assessment in assessments %}
+        <li class="list-group-item card">
+            <div>
+                <!-- Display the title, module code, and due date of each assessment -->
+                <strong>{{ assessment.title }}</strong><br>
+                <span>Module: {{ assessment.module_code }}</span><br>
+                <span>Due: {{ assessment.deadline.strftime('%d/%m/%Y') }}</span><br>
+                <p>{{ assessment.description }}</p>
+            </div>
+
+            <div class="btn-group">
+                <!-- Button to mark the assessment as completed -->
+                <a href="{{ url_for('complete_assessment', id=assessment.id) }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-check"></i> Mark as Complete
+                </a>
+
+                <!-- Button to edit the assessment -->
+                <a href="{{ url_for('edit_assessment', id=assessment.id) }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                </a>
+
+                <!-- Button to delete the assessment, with form for POST method -->
+                <form method="POST" action="{{ url_for('delete_assessment', id=assessment.id) }}" class="delete-form" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </li>
+        {% endfor %}
+    {% else %}
+        <!-- Message displayed if there are no uncompleted assessments -->
+        <p>No uncompleted assessments found.</p>
+    {% endif %}
+</ul>
+{% endblock %}

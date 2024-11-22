@@ -1,0 +1,49 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+ul.list-group {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}
+
+.list-group-item strong {
+    font-size: 1.2em;
+}
+
+.btn i {
+    margin-right: 5px; /* Adjust the spacing as needed */
+}
+
+
+.btn-group .btn {
+    border-radius: 0; /* Remove rounded corners */
+    height: 38px;
+    margin: 0 5px 0 0;
+    padding: 8px 16px; /* Consistent padding */
+    line-height: 1; /* Adjust line height for text alignment */
+    display: flex; /* Center align content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    vertical-align: middle;
+}

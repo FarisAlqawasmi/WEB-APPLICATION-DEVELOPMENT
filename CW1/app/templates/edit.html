@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Assessment{% endblock %}
+
+{% block content %}
+    <h1>Edit Assessment</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <!-- Title field for editing -->
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+        </div>
+
+        <!-- Module code field for editing -->
+        <div class="form-group">
+            {{ form.module_code.label }}
+            {{ form.module_code(class="form-control") }}
+        </div>
+
+        <!-- Deadline field for editing -->
+        <div class="form-group">
+            {{ form.deadline.label }}
+            {{ form.deadline(class="form-control") }}
+        </div>
+
+        <!-- Description field for editing -->
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description(class="form-control") }}
+        </div>
+
+        <!-- Completion status field -->
+        <div class="form-group">
+            {{ form.is_completed.label }}
+            {{ form.is_completed() }}
+        </div>
+
+        <!-- Submit button to update the assessment -->
+        <button type="submit" class="btn btn-primary">Update Assessment</button>
+    </form>
+{% endblock %}

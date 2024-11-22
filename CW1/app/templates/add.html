@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Add New Assessment{% endblock %}
+
+{% block content %}
+    <h1>Add New Assessment</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <!-- Title field for the assessment -->
+        <div class="form-group">
+            {{ form.title.label }}<br>
+            {{ form.title(class="form-control", required=True) }}
+        </div>
+
+        <!-- Module code field -->
+        <div class="form-group">
+            {{ form.module_code.label }}<br>
+            {{ form.module_code(class="form-control", required=True) }}
+        </div>
+
+        <!-- Deadline field -->
+        <div class="form-group">
+            {{ form.deadline.label }}<br>
+            {{ form.deadline(class="form-control", required=True) }}
+        </div>
+
+        <!-- Description field -->
+        <div class="form-group">
+            {{ form.description.label }}<br>
+            {{ form.description(class="form-control", required=True) }}
+        </div>
+
+        <!-- Submit button to add the assessment -->
+        <button type="submit" class="btn btn-primary">Add Assessment</button>
+    </form>
+{% endblock %}

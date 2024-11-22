@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Deleted Assessments{% endblock %}
+
+{% block content %}
+<h1>Deleted Assessments</h1>
+
+<!-- Display deleted assessments in a list format -->
+<ul class="list-group">
+    {% if assessments %}
+        {% for assessment in assessments %}
+        <li class="list-group-item card">
+            <div>
+                <!-- Display the title, module code, and due date of each deleted assessment -->
+                <strong>{{ assessment.title }}</strong><br>
+                <span>Module: {{ assessment.module_code }}</span><br>
+                <span>Due: {{ assessment.deadline.strftime('%d/%m/%Y') }}</span><br>
+                <p>{{ assessment.description }}</p>
+            </div>
+
+            <div class="btn-group">
+                <!-- Button to restore the deleted assessment -->
+                <form method="POST" action="{{ url_for('restore_assessment', id=assessment.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-warning btn-sm">
+                        <i class="fas fa-undo"></i> Restore
+                    </button>
+                </form>
+
+                <!-- Button to permanently delete the assessment, with form for POST method -->
+                <form method="POST" action="{{ url_for('delete_assessment_permanently', id=assessment.id) }}" class="delete-form" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i> Delete Permanently
+                    </button>
+                </form>
+            </div>
+        </li>
+        {% endfor %}
+    {% else %}
+        <!-- Message displayed if there are no deleted assessments -->
+        <p>No deleted assessments found.</p>
+    {% endif %}
+</ul>
+{% endblock %}
