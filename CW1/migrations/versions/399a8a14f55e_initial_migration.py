@@ -1,8 +1,8 @@
-"""Create assessment table
+"""Initial migration
 
-Revision ID: 50682446a792
+Revision ID: 399a8a14f55e
 Revises: 
-Create Date: 2024-10-14 16:20:20.351948
+Create Date: 2024-11-23 21:33:35.352440
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '50682446a792'
+revision = '399a8a14f55e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,7 +25,9 @@ def upgrade():
     sa.Column('deadline', sa.Date(), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('is_completed', sa.Boolean(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('is_deleted', sa.Boolean(), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('title', 'module_code', name='title_module_uc')
     )
     # ### end Alembic commands ###
 
